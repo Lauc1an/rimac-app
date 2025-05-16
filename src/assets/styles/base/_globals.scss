@@ -1,0 +1,5 @@
+@use '../_utils/mixins';
+
+[class$="__container"] {
+  @include mixins.make-container();
+}
