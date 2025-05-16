@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use 'sass:math';
+@use './variables' as vars;
+
+/**
+* Convert px to rem
+*/
+@function toRem($pixels, $context: vars.$font-size-base) {
+  @if (math.is-unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (math.is-unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return calc($pixels / $context) * 1rem;
+}
+
+/**
+* get the max-width value in px for any given breakpoint
+* (for non-fluid containers), $breakpoint must exist within
+* $container-max-widths array.
+*/
+@function get-maxwidth-for($breakpoint) {
+  @return map.get(vars.$container-max-widths, $breakpoint);
+}

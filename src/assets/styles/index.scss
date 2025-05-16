@@ -1,3 +1,14 @@
-body {
-  background-color: aqua;
-}
+@charset "UTF-8";
+
+@use '_utils/variables';
+@use '_utils/colors';
+
+@use 'base/reset';
+@use 'base/fonts';
+@use 'base/typography';
+@use 'base/base';
+@use 'base/globals';
+
+@use '_utils/functions';
+
+@use 'layout/layout';

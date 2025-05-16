@@ -1,0 +1,8 @@
+@use '../_utils/colors';
+@use './fonts';
+@use '../_utils/variables' as var;
+
+body {
+  color: colors.$rich-black;
+  font: normal #{var.$font-size-base} / #{var.$font-line-height} fonts.$br-sonoma;
+}
