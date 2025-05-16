@@ -1,0 +1,36 @@
+@use 'sass:math';
+@use '../variables' as vars;
+@use '../functions' as fn;
+@use './miscelaneous' as mixins;
+
+@mixin make-container() {
+  @include make-fluid();
+
+  @include mixins.mq($from: small) {
+    max-width: fn.get-maxwidth-for($breakpoint: small);
+  }
+
+  @include mixins.mq($from: medium) {
+    max-width: fn.get-maxwidth-for($breakpoint: medium);
+  }
+
+  @include mixins.mq($from: regular) {
+    max-width: fn.get-maxwidth-for($breakpoint: regular);
+  }
+
+  @include mixins.mq($from: large) {
+    max-width: fn.get-maxwidth-for($breakpoint: large);
+  }
+
+  @include mixins.mq($from: xlarge) {
+    max-width: fn.get-maxwidth-for($breakpoint: xlarge);
+  }
+}
+
+@mixin make-fluid() {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: math.div(fn.toRem(vars.$grid-gutter-width), 2);
+  padding-right: math.div(fn.toRem(vars.$grid-gutter-width), 2);
+  width: 100%;
+}
