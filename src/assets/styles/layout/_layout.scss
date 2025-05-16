@@ -1,0 +1,12 @@
+@use '../_utils/colors';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: colors.$ghost-White;
+}
