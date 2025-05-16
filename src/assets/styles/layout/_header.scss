@@ -1,0 +1,59 @@
+@use '../_utils/mixins';
+@use '../_utils/functions' as fn;
+
+.header {
+  padding-block: fn.toRem(12);
+
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    img {
+      height: fn.toRem(32);
+      width: auto;
+    }
+  }
+
+  &__tfn {
+    align-items: center;
+    column-gap: fn.toRem(16);
+    display: flex;
+
+    span {
+      display: none;
+
+      @include mixins.mq($from: small) {
+        @include mixins.font-size-and-height(12, 16);
+
+        display: block;
+        font-weight: 600;
+        letter-spacing: fn.toRem(0.2);
+        text-align: right;
+      }
+    }
+
+    a {
+      align-items: center;
+      column-gap: fn.toRem(8);
+      display: flex;
+
+      img {
+        height: fn.toRem(16);
+        width: auto;
+      }
+
+      p {
+        @include mixins.font-size-and-height(16, 20);
+
+        font-weight: 700;
+
+        @include mixins.mq($from: small) {
+          @include mixins.font-size-and-height(18, 20);
+        }
+      }
+    }
+  }
+}
