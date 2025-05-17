@@ -1,0 +1,144 @@
+@use '../_utils/functions' as fn;
+@use '../_utils/colors';
+@use '../_utils/mixins';
+
+.login {
+  @include mixins.mq($from: small) {
+    margin-top: fn.toRem(16);
+  }
+
+  @include mixins.mq($from: regular) {
+    margin-top: fn.toRem(32);
+  }
+
+  &__container {
+    display: grid;
+    gap: fn.toRem(24) fn.toRem(12);
+    grid-auto-columns: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "heading image"
+      "form form";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+
+    @include mixins.mq($from: small) {
+      gap: fn.toRem(8) fn.toRem(36);
+      grid-template-areas:
+        "image heading"
+        "image form";
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+    }
+
+    @include mixins.mq($from: medium) {
+      gap: fn.toRem(8) fn.toRem(48);
+      grid-template-columns: auto fn.toRem(351);
+    }
+
+    @include mixins.mq($from: regular) {
+      gap: fn.toRem(8) fn.toRem(64);
+      grid-template-columns: fn.toRem(380) fn.toRem(351);
+    }
+
+    @include mixins.mq($from: large) {
+      gap: fn.toRem(8) fn.toRem(128);
+      grid-template-columns: fn.toRem(480) fn.toRem(351);
+    }
+  }
+
+  &__heading {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    grid-area: heading;
+    justify-content: center;
+
+    h1 {
+      @include mixins.font-size-and-height(28, 36);
+
+      font-weight: 700;
+      max-width: fn.toRem(240);
+
+      @include mixins.mq($from: small) {
+        max-width: fn.toRem(260);
+      }
+
+      @include mixins.mq($from: regular) {
+        @include mixins.font-size-and-height(32, 40);
+
+        max-width: fn.toRem(300);
+      }
+    }
+  }
+
+  &__promo {
+    @include mixins.font-size-and-height(12, 16);
+
+    background: colors.$bright-turquoise;
+    background: linear-gradient(90deg, colors.$bright-turquoise 0%, colors.$guppie-green 100%);
+    border-radius: fn.toRem(5);
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: fn.toRem(8);
+    padding: fn.toRem(3) fn.toRem(8);
+
+    @include mixins.mq($from: regular) {
+      font-size: fn.toRem(14);
+      margin-bottom: fn.toRem(16);
+    }
+  }
+
+  &__image {
+    grid-area: image;
+
+    img {
+      border-radius: fn.toRem(15);
+      height: fn.toRem(160);
+      object-fit: cover;
+      object-position: 58% 0;
+      transform: scaleX(-1);
+      width: fn.toRem(136);
+
+      @include mixins.mq($from: small) {
+        height: fn.toRem(350);
+        object-position: 61% 0;
+        width: fn.toRem(220);
+      }
+
+      @include mixins.mq($from: medium) {
+        height: fn.toRem(420);
+        width: fn.toRem(321);
+      }
+
+      @include mixins.mq($from: regular) {
+        height: fn.toRem(450);
+        width: fn.toRem(380);
+      }
+
+      @include mixins.mq($from: large) {
+        height: fn.toRem(560);
+        width: fn.toRem(480);
+      }
+    }
+  }
+
+  &__form {
+    border-top: fn.toRem(1) solid colors.$soap;
+    grid-area: form;
+    padding-top: fn.toRem(24);
+
+    @include mixins.mq($from: small) {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    p {
+      @include mixins.font-size-and-height(14, 20);
+
+      font-weight: 600;
+      letter-spacing: fn.toRem(0.2);
+      margin-bottom: fn.toRem(24);
+    }
+  }
+}
