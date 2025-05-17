@@ -5,6 +5,7 @@ import LoginPage from "@/pages/LoginPage";
 import PlansPage from "@/pages/PlansPage";
 import SummaryPage from "@/pages/SummaryPage";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import "@/assets/styles/index.scss";
 
 const router = createBrowserRouter([
@@ -17,5 +18,6 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Header />
     <RouterProvider router={router} />
+    <Footer />
   </StrictMode>
 );

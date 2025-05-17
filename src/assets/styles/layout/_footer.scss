@@ -1,0 +1,60 @@
+@use '../_utils/colors';
+@use "../_utils/mixins";
+@use '../_utils/functions' as fn;
+
+.footer {
+  background-color: colors.$rich-black;
+  color: white;
+  padding-block: fn.toRem(32);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.mq($from: small) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    align-items: center;
+    column-gap: fn.toRem(4);
+    display: flex;
+    justify-content: center;
+    margin-bottom: fn.toRem(24);
+
+    @include mixins.mq($from: small) {
+      margin-bottom: 0;
+    }
+
+    @include mixins.mq($from: regular) {
+      column-gap: 0;
+      flex-direction: column;
+      row-gap: fn.toRem(4);
+    }
+  }
+
+  &__copyright {
+    border-top: fn.toRem(1) solid colors.$space-cadet;
+    padding-top: fn.toRem(24);
+
+    @include mixins.mq($from: small) {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    p {
+      @include mixins.font-size-and-height(12, 20);
+
+      font-weight: 400;
+      letter-spacing: fn.toRem(0.1);
+      text-align: center;
+
+      @include mixins.mq($from: medium) {
+        @include mixins.font-size-and-height(14, 16);
+      }
+    }
+  }
+}
