@@ -2,6 +2,7 @@
 
 @use '_utils/variables';
 @use '_utils/colors';
+@use '_utils/functions';
 
 @use 'base/reset';
 @use 'base/fonts';
@@ -9,9 +10,9 @@
 @use 'base/base';
 @use 'base/globals';
 
-@use '_utils/functions';
-
 @use 'layout/layout';
 @use 'layout/header';
 
 @use 'pages/login';
+
+@use 'components/form';

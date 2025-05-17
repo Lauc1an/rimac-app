@@ -1,0 +1,25 @@
+@use './miscelaneous' as mixins;
+@use '../functions' as fn;
+
+@mixin button ($background) {
+  @include mixins.font-size-and-height(18, 20);
+
+  background-color: $background;
+  border-radius: fn.toRem(30);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-weight: 700;
+  letter-spacing: fn.toRem(0.4);
+  padding-block: fn.toRem(18);
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $background;
+    color: white;
+    text-decoration: none;
+  }
+}

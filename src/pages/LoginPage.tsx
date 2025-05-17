@@ -1,3 +1,4 @@
+import LoginForm from "@/components/LoginForm";
 import family from "@/assets/images/family.png";
 
 function LoginPage() {
@@ -13,6 +14,7 @@ function LoginPage() {
         </div>
         <div className="login__form">
           <p>Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría, 100% online.</p>
+          <LoginForm />
         </div>
       </div>
     </section>
