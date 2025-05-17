@@ -9,15 +9,15 @@ $breakpoints: (
   xlarge: 1400px,
 ) !default;
 
-$grid-gutter-width: 24px !default;
+$grid-gutter-width: 48px !default;
 
 $container-max-widths: (
-  tiny: 351px + $grid-gutter-width,
-  small: 552px + $grid-gutter-width,
-  medium: 744px + $grid-gutter-width,
-  regular: 968px + $grid-gutter-width,
-  large: 1176px + $grid-gutter-width,
-  xlarge: 1376px + $grid-gutter-width,
+  tiny: 327px + $grid-gutter-width,
+  small: 528px + $grid-gutter-width,
+  medium: 720px + $grid-gutter-width,
+  regular: 944px + $grid-gutter-width,
+  large: 1152px + $grid-gutter-width,
+  xlarge: 1352px + $grid-gutter-width,
 ) !default;
 
 $font-size-base: 16px !default;

@@ -3,6 +3,8 @@
 @use '../_utils/mixins';
 
 .login {
+  margin-bottom: fn.toRem(96);
+
   @include mixins.mq($from: small) {
     margin-top: fn.toRem(16);
   }

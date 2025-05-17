@@ -1,0 +1,177 @@
+@use "../_utils/mixins";
+@use "../_utils/colors";
+@use "../_utils/functions" as fn;
+
+.form {
+  &__input {
+    border-radius: fn.toRem(12);
+    border: fn.toRem(1) solid colors.$ucla-blue;
+    height: fn.toRem(56);
+    margin-bottom: fn.toRem(16);
+    overflow: hidden;
+    padding-top: fn.toRem(12);
+    position: relative;
+
+    input {
+      @include mixins.font-size-and-height(16, 24);
+
+      background-color: transparent;
+      border: none;
+      outline: none;
+      padding: fn.toRem(10) fn.toRem(16);
+      width: 100%;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:focus + label,
+      &:not(:placeholder-shown) + label {
+        @include mixins.font-size-and-height(12, 16);
+
+        color: colors.$ucla-blue;
+        left: fn.toRem(12);
+        padding: 0 fn.toRem(4);
+        top: fn.toRem(15);
+        transform: translateY(-50%);
+      }
+    }
+
+    label {
+      background-color: transparent;
+      left: fn.toRem(16);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &__inputgroup {
+    border-radius: fn.toRem(12);
+    border: fn.toRem(1) solid colors.$ucla-blue;
+    display: flex;
+    margin-bottom: fn.toRem(16);
+    position: relative;
+    width: 100;
+
+    button {
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      border-right: fn.toRem(1) solid colors.$ucla-blue;
+      display: flex;
+      justify-content: space-between;
+      padding: fn.toRem(16);
+      width: fn.toRem(140);
+
+      &.open {
+        img {
+          transform: rotate(180deg);
+        }
+      }
+
+      p {
+        @include mixins.font-size-and-height(16, 24);
+
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+
+      img {
+        height: fn.toRem(8.5);
+        width: auto;
+      }
+    }
+
+    ul {
+      background-color: white;
+      border-radius: fn.toRem(6);
+      border: 1px solid colors.$soap;
+      box-shadow: 0 1px 8px 0px rgba(13, 25, 133, 0.8);
+      box-sizing: border-box;
+      display: none;
+      max-height: fn.toRem(252);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: fn.toRem(7);
+      position: absolute;
+      top: fn.toRem(58);
+      width: fn.toRem(130);
+      z-index: 10;
+
+      &.shown {
+        display: block;
+      }
+
+      li {
+        align-items: center;
+        border-radius: fn.toRem(6);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding: fn.toRem(8) fn.toRem(12);
+        scroll-margin: fn.toRem(4);
+
+        &:hover {
+          background-color: colors.$alice-blue;
+        }
+      }
+    }
+
+    .form__input {
+      border: none;
+      margin-bottom: 0;
+    }
+  }
+
+  &__check {
+    display: block;
+    margin-bottom: fn.toRem(16);
+    min-height: fn.toRem(24);
+    padding-left: fn.toRem(32);
+
+    input {
+      appearance: none;
+      background-color: white;
+      background-image: none;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      border-radius: fn.toRem(4);
+      border: fn.toRem(1) solid colors.$soap;
+      float: left;
+      height: fn.toRem(20);
+      margin-left: fn.toRem(-32);
+      margin-top: 0;
+      width: fn.toRem(20);
+
+      &:checked {
+        background-color: colors.$rich-black;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.49992 9.41492L0.794922 5.70492L2.20493 4.29492L4.49992 6.58492L10.5449 0.544922L11.9549 1.95492L4.49992 9.41492Z' fill='white'/%3E%3C/svg%3E");
+        background-size: fn.toRem(12) fn.toRem(10);
+        border-color: colors.$rich-black;
+      }
+    }
+
+    label {
+      display: inline-block;
+      margin-top: fn.toRem(2);
+    }
+  }
+
+  &__link {
+    @include mixins.font-size-and-height(12, 20);
+
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  button[type="submit"] {
+    @include mixins.button(colors.$rich-black);
+
+    margin-top: fn.toRem(36);
+    width: 100%;
+  }
+}
