@@ -23,7 +23,7 @@ function LoginForm() {
   return (
     <form className="form">
       <div className="form__inputgroup">
-        <button type="button" onClick={toggleDropdown}>
+        <button type="button" className={dropdown ? "open" : ""} onClick={toggleDropdown}>
           <p>{documentList[document]}</p>
           <img src={chevronIcon} alt="Chevron icon" />
         </button>
