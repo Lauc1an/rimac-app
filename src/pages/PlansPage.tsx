@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Plans() {
+function PlansPage() {
   return (
     <div>Plans</div>
   )
 }
 
-export default Plans;
+export default PlansPage;
