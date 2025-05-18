@@ -3,7 +3,7 @@ import { UserContext, initialState } from "./UserContext";
 import type { Action } from "./UserContext";
 import type { UserLoginType, ProviderProps } from "@/utils/Types";
 
-const UserReducer = (action: Action): UserLoginType => {
+const UserReducer = (state: UserLoginType, action: Action): UserLoginType => {
   switch (action.type) {
     case "change": {
       return {
