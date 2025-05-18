@@ -8,12 +8,14 @@ export interface LoginType {
   type: string;
   document: string;
   mobile: string;
+  privacy?: string;
+  comunication?: string;
 };
 
 export interface UserType {
-  name:	string;
-  lastName:	string;
-  birthDay:	string;
+  name: string;
+  lastName: string;
+  birthDay: string;
 };
 
 export interface UserLoginType extends LoginType, UserType {}
@@ -29,11 +31,20 @@ export interface ListPlansType {
  list: Array<PlansType>;
 };
 
+export interface FormErrorsType {
+  type?: string;
+  document?: string;
+  mobile?: string;
+  privacy?: string;
+  comunication?: string;
+};
+
 export interface AuthContextType {
   signIn: ({type, document, mobile}: LoginType) => Promise<void>;
   signOut: () => void;
   name: string | null;
   loading: boolean;
+  errors: FormErrorsType | null;
 };
 
 export interface ProviderProps {

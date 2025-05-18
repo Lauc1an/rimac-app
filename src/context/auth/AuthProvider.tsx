@@ -3,7 +3,9 @@ import { useNavigate, useLocation } from "react-router";
 import { AuthContext } from "./AuthContext";
 import { useUserContext } from "@/context/user/useUser";
 import { getUser } from "@/models/User";
-import type { ProviderProps, LoginType } from "@/utils/Types";
+import type { ProviderProps, LoginType, FormErrorsType } from "@/utils/Types";
+import { validateLoginSchema } from "@/utils/Validation";
+import { ValidationError } from "yup";
 
 const useProtectedRoute = (name: string | null) => {
   const location = useLocation();
@@ -22,13 +24,39 @@ const useProtectedRoute = (name: string | null) => {
 
 export const AuthProvider = ({ children }: ProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [errors, setErrors] = useState<FormErrorsType | null>(null);
   const [name, setName] = useState<string | null>(null);
   const { dispatch } = useUserContext();
 
-  const signIn = async ({type, document, mobile}: LoginType) => {
+  const validateForm = async (data: LoginType) => {
+    try {
+      await validateLoginSchema.validate(data, { abortEarly: false });
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        const groupedErrors = error.inner.reduce((acc, e) => {
+          if (!e.path) return acc;
+          if (!acc[e.path]) acc[e.path] = [];
+          acc[e.path].push(e.message);
+          return acc;
+        }, {} as Record<string, string[]>);
+        setErrors(groupedErrors);
+        throw new Error;
+      }
+    }
+  };
+
+  const signIn = async ({type, document, mobile, privacy, comunication}: LoginType) => {
     setLoading(true);
 
     try {
+      await validateForm({
+        type,
+        document,
+        mobile,
+        privacy,
+        comunication
+      });
+
       const response = await getUser();
 
       if (response.status && response.data) {
@@ -94,6 +122,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
         signOut,
         name,
         loading,
+        errors,
       }}
     >
       {children}
