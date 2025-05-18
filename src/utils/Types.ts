@@ -25,9 +25,15 @@ export interface PlansType {
   age: number;
 };
 
+export interface ListPlansType {
+ list: Array<PlansType>;
+};
+
 export interface AuthContextType {
-  user: UserType | null;
-  setUser: (user: UserType | null) => void;
+  signIn: ({type, document, mobile}: LoginType) => Promise<void>;
+  signOut: () => void;
+  name: string | null;
+  loading: boolean;
 };
 
 export interface ProviderProps {
